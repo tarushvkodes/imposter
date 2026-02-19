@@ -1,0 +1,402 @@
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --primary: #6c5ce7;
+  --primary-dark: #5a4bd1;
+  --secondary: #00cec9;
+  --danger: #d63031;
+  --success: #00b894;
+  --bg: #0f0f1a;
+  --bg-card: #1a1a2e;
+  --text: #f0f0f0;
+  --text-muted: #a0a0b0;
+  --radius: 12px;
+}
+
+html {
+  font-size: 16px;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+    Ubuntu, Cantarell, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.hidden {
+  display: none !important;
+}
+
+/* Header */
+header {
+  text-align: center;
+  padding: 2rem 1rem 1rem;
+}
+
+header h1 {
+  font-size: 2.2rem;
+  letter-spacing: 0.05em;
+  color: var(--primary);
+}
+
+header h1 span {
+  color: var(--secondary);
+}
+
+header p {
+  color: var(--text-muted);
+  margin-top: 0.3rem;
+  font-size: 0.95rem;
+}
+
+/* Main container */
+main {
+  width: 100%;
+  max-width: 480px;
+  padding: 1rem;
+  flex: 1;
+}
+
+/* Screens */
+.screen {
+  background: var(--bg-card);
+  border-radius: var(--radius);
+  padding: 2rem 1.5rem;
+  text-align: center;
+}
+
+.screen h2 {
+  margin-bottom: 1rem;
+  font-size: 1.4rem;
+}
+
+/* Buttons */
+.btn {
+  display: inline-block;
+  padding: 0.75rem 1.8rem;
+  border: none;
+  border-radius: var(--radius);
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.1s;
+}
+
+.btn:active {
+  transform: scale(0.97);
+}
+
+.btn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.btn-primary {
+  background: var(--primary);
+  color: #fff;
+}
+
+.btn-primary:hover:not(:disabled) {
+  background: var(--primary-dark);
+}
+
+.btn-secondary {
+  background: var(--secondary);
+  color: #000;
+}
+
+.btn-secondary:hover:not(:disabled) {
+  background: #00b5b0;
+}
+
+/* Input */
+input[type="text"],
+input[type="number"] {
+  width: 100%;
+  padding: 0.7rem 1rem;
+  border: 2px solid #333;
+  border-radius: var(--radius);
+  background: #16162a;
+  color: var(--text);
+  font-size: 1rem;
+  outline: none;
+  transition: border 0.2s;
+}
+
+input:focus {
+  border-color: var(--primary);
+}
+
+/* Error */
+.error-msg {
+  color: var(--danger);
+  font-size: 0.9rem;
+  margin-top: 0.5rem;
+}
+
+/* Setup screen */
+#setup-screen .input-group {
+  margin: 1.5rem 0;
+}
+
+#setup-screen label {
+  display: block;
+  margin-bottom: 0.4rem;
+  font-weight: 500;
+}
+
+/* Names screen */
+.name-input-row {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  margin-bottom: 0.8rem;
+}
+
+.name-input-row label {
+  min-width: 5rem;
+  text-align: right;
+  font-weight: 500;
+  font-size: 0.9rem;
+  color: var(--text-muted);
+}
+
+.name-input-row input {
+  flex: 1;
+}
+
+#names-screen .names-container {
+  max-height: 50vh;
+  overflow-y: auto;
+  margin: 1rem 0;
+  padding-right: 0.5rem;
+}
+
+/* Reveal screen */
+.pass-device h2 {
+  font-size: 1.2rem;
+  color: var(--text-muted);
+}
+
+.player-name-display {
+  font-size: 1.8rem;
+  font-weight: 700;
+  margin: 1rem 0 1.5rem;
+  color: var(--secondary);
+}
+
+.word-display {
+  animation: fadeIn 0.3s ease;
+}
+
+.player-label {
+  font-size: 1rem;
+  color: var(--text-muted);
+  margin-bottom: 0.3rem;
+}
+
+.category-label {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  margin-bottom: 1rem;
+}
+
+.word-text {
+  font-size: 2rem;
+  font-weight: 700;
+  margin: 0.5rem 0 1rem;
+  padding: 1rem;
+  border-radius: var(--radius);
+}
+
+.normal-word {
+  background: rgba(108, 92, 231, 0.15);
+  color: var(--primary);
+  border: 2px solid var(--primary);
+}
+
+.imposter-word {
+  background: rgba(108, 92, 231, 0.15);
+  color: var(--primary);
+  border: 2px solid var(--primary);
+}
+
+.word-hint {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  margin-bottom: 1.2rem;
+}
+
+/* Discussion screen */
+#discussion-screen #category-reminder {
+  color: var(--secondary);
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+
+#discussion-screen ol {
+  text-align: left;
+  margin: 1rem auto;
+  max-width: 240px;
+}
+
+#discussion-screen li {
+  padding: 0.4rem 0;
+  font-size: 1.05rem;
+}
+
+#discussion-screen .discussion-info {
+  color: var(--text-muted);
+  font-size: 0.9rem;
+  margin: 1rem 0;
+}
+
+/* Voting screen */
+#voter-prompt {
+  font-size: 1rem;
+  margin-bottom: 1rem;
+  color: var(--text-muted);
+  min-height: 1.5rem;
+}
+
+#vote-options {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  margin-top: 0.5rem;
+}
+
+.btn-vote {
+  background: #2d2d4a;
+  color: var(--text);
+  padding: 0.8rem;
+  border: 2px solid transparent;
+  border-radius: var(--radius);
+  font-size: 1rem;
+  cursor: pointer;
+  transition: border 0.2s, background 0.2s;
+}
+
+.btn-vote:hover:not(:disabled) {
+  border-color: var(--primary);
+  background: #3a3a5a;
+}
+
+.btn-vote:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+}
+
+/* Results screen */
+#outcome {
+  font-size: 1.6rem;
+  margin-bottom: 1rem;
+}
+
+.outcome-win {
+  color: var(--success);
+  font-weight: 700;
+}
+
+.outcome-lose {
+  color: var(--danger);
+  font-weight: 700;
+}
+
+#imposter-reveal {
+  font-size: 1.1rem;
+  margin-bottom: 0.5rem;
+}
+
+#word-reveal {
+  font-size: 0.95rem;
+  color: var(--text-muted);
+  margin-bottom: 1.2rem;
+}
+
+#vote-breakdown {
+  text-align: left;
+  margin: 1rem 0;
+}
+
+.vote-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.5rem 0.8rem;
+  border-radius: 8px;
+  margin-bottom: 0.3rem;
+}
+
+.vote-row.is-imposter {
+  background: rgba(214, 48, 49, 0.15);
+}
+
+.vote-name {
+  font-weight: 500;
+}
+
+.imposter-badge {
+  font-size: 0.7rem;
+  background: var(--danger);
+  color: #fff;
+  padding: 0.15rem 0.4rem;
+  border-radius: 4px;
+  margin-left: 0.3rem;
+  vertical-align: middle;
+}
+
+.vote-count {
+  color: var(--text-muted);
+  font-size: 0.9rem;
+}
+
+#play-again-btn {
+  margin-top: 1rem;
+}
+
+/* Footer */
+footer {
+  padding: 1.5rem;
+  text-align: center;
+  font-size: 0.8rem;
+  color: var(--text-muted);
+}
+
+footer a {
+  color: var(--primary);
+  text-decoration: none;
+}
+
+footer a:hover {
+  text-decoration: underline;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Responsive */
+@media (max-width: 500px) {
+  header h1 {
+    font-size: 1.7rem;
+  }
+
+  .screen {
+    padding: 1.5rem 1rem;
+  }
+
+  .word-text {
+    font-size: 1.6rem;
+  }
+}
