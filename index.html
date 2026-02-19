@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Imposter - Word Game</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header>
+    <h1>IMP<span>OSTER</span></h1>
+    <p>The word guessing party game</p>
+  </header>
+
+  <main>
+    <!-- Setup Screen -->
+    <section id="setup-screen" class="screen">
+      <h2>New Game</h2>
+      <p>How many players?</p>
+      <div class="input-group">
+        <label for="player-count">Players (3–20)</label>
+        <input type="number" id="player-count" min="3" max="20" placeholder="e.g. 5">
+      </div>
+      <p id="setup-error" class="error-msg hidden"></p>
+      <button id="start-btn" class="btn btn-primary">Next</button>
+    </section>
+
+    <!-- Names Screen -->
+    <section id="names-screen" class="screen hidden">
+      <h2>Enter Player Names</h2>
+      <div class="names-container">
+        <div id="name-inputs"></div>
+      </div>
+      <p id="names-error" class="error-msg hidden"></p>
+      <button id="names-btn" class="btn btn-primary">Start Game</button>
+    </section>
+
+    <!-- Reveal Screen -->
+    <section id="reveal-screen" class="screen hidden">
+      <div id="reveal-content"></div>
+    </section>
+
+    <!-- Discussion Screen -->
+    <section id="discussion-screen" class="screen hidden">
+      <h2>Discussion Round</h2>
+      <p id="category-reminder"></p>
+      <p class="discussion-info">
+        Take turns giving a one-word clue about your word.<br>
+        Try to identify the imposter!
+      </p>
+      <h3>Speaking Order</h3>
+      <ol id="speaking-order"></ol>
+      <button id="vote-btn" class="btn btn-primary" style="margin-top:1.2rem;">Proceed to Vote</button>
+    </section>
+
+    <!-- Voting Screen -->
+    <section id="voting-screen" class="screen hidden">
+      <h2>Vote</h2>
+      <p id="voter-prompt"></p>
+      <div id="vote-options"></div>
+    </section>
+
+    <!-- Results Screen -->
+    <section id="results-screen" class="screen hidden">
+      <h2>Results</h2>
+      <div id="outcome"></div>
+      <p id="imposter-reveal"></p>
+      <p id="word-reveal"></p>
+      <div id="vote-breakdown"></div>
+      <button id="play-again-btn" class="btn btn-secondary">Play Again</button>
+    </section>
+  </main>
+
+  <footer>
+    <p>Imposter Word Game &mdash; <a href="https://github.com/tarushvkodes/imposter">GitHub</a></p>
+  </footer>
+
+  <script src="js/words.js"></script>
+  <script src="js/game.js"></script>
+</body>
+</html>
