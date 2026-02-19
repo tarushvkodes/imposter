@@ -170,18 +170,31 @@
 
   function showWord() {
     var isImposter = state.currentReveal === state.imposterIndex;
-    var word = isImposter ? state.imposterWord : state.realWord;
     var name = escapeHtml(state.playerNames[state.currentReveal]);
-    var roleClass = isImposter ? "imposter-word" : "normal-word";
+    var contentHtml;
 
-    document.getElementById("reveal-content").innerHTML =
-      '<div class="word-display">' +
-      '<p class="player-label">' + name + '</p>' +
-      '<p class="category-label">Category: ' + escapeHtml(state.category) + '</p>' +
-      '<p class="word-text ' + roleClass + '">' + escapeHtml(word) + '</p>' +
-      '<p class="word-hint">Remember your word, then pass the device.</p>' +
-      '<button id="next-player-btn" class="btn btn-secondary">Next</button>' +
-      '</div>';
+    if (isImposter) {
+      contentHtml =
+        '<div class="word-display">' +
+        '<p class="player-label">' + name + '</p>' +
+        '<p class="imposter-role-label">You are the</p>' +
+        '<p class="imposter-role-text">IMPOSTER</p>' +
+        '<p class="category-label">Category: ' + escapeHtml(state.category) + '</p>' +
+        '<p class="word-hint">You do not get a word. Blend in!</p>' +
+        '<button id="next-player-btn" class="btn btn-secondary">Next</button>' +
+        '</div>';
+    } else {
+      contentHtml =
+        '<div class="word-display">' +
+        '<p class="player-label">' + name + '</p>' +
+        '<p class="category-label">Category: ' + escapeHtml(state.category) + '</p>' +
+        '<p class="word-text normal-word">' + escapeHtml(state.realWord) + '</p>' +
+        '<p class="word-hint">Remember your word, then pass the device.</p>' +
+        '<button id="next-player-btn" class="btn btn-secondary">Next</button>' +
+        '</div>';
+    }
+
+    document.getElementById("reveal-content").innerHTML = contentHtml;
 
     document.getElementById("next-player-btn").addEventListener("click", function () {
       state.currentReveal++;
@@ -292,8 +305,7 @@
 
     // Word reveal
     document.getElementById("word-reveal").innerHTML =
-      'Real word: <strong>' + escapeHtml(state.realWord) + '</strong> | ' +
-      'Imposter word: <strong>' + escapeHtml(state.imposterWord) + '</strong>';
+      'The word was: <strong>' + escapeHtml(state.realWord) + '</strong>';
 
     // Vote breakdown
     var breakdownEl = document.getElementById("vote-breakdown");
