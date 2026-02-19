@@ -14,6 +14,7 @@
     imposterWord: "",
     category: "",
     currentReveal: 0,
+    currentVoter: 0,
     votes: {},
     phase: "setup" // setup | names | reveal | discussion | voting | results
   };

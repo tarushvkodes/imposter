@@ -218,12 +218,7 @@ input:focus {
   border-radius: var(--radius);
 }
 
-.normal-word {
-  background: rgba(108, 92, 231, 0.15);
-  color: var(--primary);
-  border: 2px solid var(--primary);
-}
-
+.normal-word,
 .imposter-word {
   background: rgba(108, 92, 231, 0.15);
   color: var(--primary);

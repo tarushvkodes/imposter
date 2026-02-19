@@ -38,7 +38,7 @@ const WORD_CATEGORIES = {
     ["Boxing", "Wrestling"],
     ["Golf", "Mini Golf"],
     ["Surfing", "Skateboarding"],
-    ["Rugby", "Football"]
+    ["Rugby", "American Football"]
   ],
   "Places": [
     ["Beach", "Lake"],
